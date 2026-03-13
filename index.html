@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name | Personal Website</title>
+    <meta
+      name="description"
+      content="Personal website for introducing yourself, your work, and ways to get in touch."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#home">YOUR NAME</a>
+        <nav class="nav">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="home">
+        <section class="hero" data-reveal>
+          <p class="eyebrow">PERSONAL WEBSITE</p>
+          <h1>Build a clear online home for your work and ideas.</h1>
+          <p class="hero-copy">
+            Replace this text with a short self-introduction: who you are, what
+            you do, and what kind of opportunities or collaborations you care
+            about.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View Projects</a>
+            <a class="button button-secondary" href="#contact">Get in Touch</a>
+          </div>
+          <ul class="hero-metrics">
+            <li>
+              <span class="metric-value">01</span>
+              <span class="metric-label">Core focus area</span>
+            </li>
+            <li>
+              <span class="metric-value">02</span>
+              <span class="metric-label">Selected projects</span>
+            </li>
+            <li>
+              <span class="metric-value">03</span>
+              <span class="metric-label">Contact channels</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel about" id="about" data-reveal>
+          <div class="section-heading">
+            <p class="eyebrow">ABOUT</p>
+            <h2>Short, direct, and easy to scan.</h2>
+          </div>
+          <div class="about-grid">
+            <p>
+              Use this section to describe your background, current work, and
+              strengths. Keep it concrete. A few sentences usually read better
+              than a long autobiography.
+            </p>
+            <p>
+              Add links to your GitHub, resume, blog, or social profiles. If
+              you want this site to stay minimal, that is usually enough.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel projects" id="projects" data-reveal>
+          <div class="section-heading">
+            <p class="eyebrow">PROJECTS</p>
+            <h2>Show a few things that prove what you can do.</h2>
+          </div>
+          <div class="project-list">
+            <article class="project-card">
+              <p class="project-index">01</p>
+              <h3>Project One</h3>
+              <p>
+                Add a one-sentence explanation of the problem, your role, and
+                the outcome.
+              </p>
+              <a href="https://github.com/" target="_blank" rel="noreferrer"
+                >Repository</a
+              >
+            </article>
+            <article class="project-card">
+              <p class="project-index">02</p>
+              <h3>Project Two</h3>
+              <p>
+                If a project is private, describe the impact instead of linking
+                the source code.
+              </p>
+              <a href="https://github.com/" target="_blank" rel="noreferrer"
+                >Case Study</a
+              >
+            </article>
+            <article class="project-card">
+              <p class="project-index">03</p>
+              <h3>Project Three</h3>
+              <p>
+                Prefer strong specifics: metrics, users, performance gains, or
+                what you learned.
+              </p>
+              <a href="https://github.com/" target="_blank" rel="noreferrer"
+                >Demo</a
+              >
+            </article>
+          </div>
+        </section>
+
+        <section class="panel contact" id="contact" data-reveal>
+          <div class="section-heading">
+            <p class="eyebrow">CONTACT</p>
+            <h2>Make the next step obvious.</h2>
+          </div>
+          <div class="contact-box">
+            <p>
+              Replace the links below with your real contact details. For a
+              personal website, email plus one or two public profiles is
+              usually enough.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:hello@example.com">hello@example.com</a>
+              <a href="https://github.com/your-handle" target="_blank" rel="noreferrer"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/your-handle"
+                target="_blank"
+                rel="noreferrer"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; <span id="year"></span> Your Name. Built for GitHub Pages.</p>
+      </footer>
+    </div>
+  </body>
+</html>
