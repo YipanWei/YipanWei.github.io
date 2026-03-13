@@ -3,10 +3,10 @@
   --panel-bg: #ffffff;
   --border: #e1e1dc;
   --border-strong: #b9b9b0;
-  --text: #222222;
-  --muted: #666666;
-  --link: #225ea8;
-  --link-hover: #173f73;
+  --text: #000000;
+  --muted: #000000;
+  --link: #000000;
+  --link-hover: #000000;
 }
 
 * {
