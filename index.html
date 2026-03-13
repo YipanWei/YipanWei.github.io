@@ -3,150 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name | Personal Website</title>
+    <title>Yipan Wei | Academic Homepage</title>
     <meta
       name="description"
-      content="Personal website for introducing yourself, your work, and ways to get in touch."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      content="Academic homepage for Yipan Wei with biography, news, research, publications, and contact information."
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <a class="brand" href="#home">YOUR NAME</a>
-        <nav class="nav">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-title" href="#top">Yipan Wei</a>
+        <nav class="site-nav" aria-label="Primary">
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
+          <a href="#news">News</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
           <a href="#contact">Contact</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main id="home">
-        <section class="hero" data-reveal>
-          <p class="eyebrow">PERSONAL WEBSITE</p>
-          <h1>Build a clear online home for your work and ideas.</h1>
-          <p class="hero-copy">
-            Replace this text with a short self-introduction: who you are, what
-            you do, and what kind of opportunities or collaborations you care
-            about.
+    <main class="layout" id="top">
+      <aside class="sidebar" data-reveal>
+        <div class="profile-card">
+          <div class="profile-avatar" aria-hidden="true">YW</div>
+          <h1>Yipan Wei</h1>
+          <p class="profile-role">PhD Student / Researcher</p>
+          <p class="profile-affiliation">
+            Department / Lab Name<br />
+            University Name
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">View Projects</a>
-            <a class="button button-secondary" href="#contact">Get in Touch</a>
-          </div>
-          <ul class="hero-metrics">
+          <ul class="profile-links">
+            <li><a href="mailto:hello@example.com">Email</a></li>
+            <li><a href="https://github.com/YipanWei" target="_blank" rel="noreferrer">GitHub</a></li>
+            <li><a href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="#">CV</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="content">
+        <section class="section" id="about" data-reveal>
+          <h2>About Me</h2>
+          <p>
+            I am a researcher working on machine learning, multimodal modeling,
+            and medical AI. This page is structured in the style of an academic
+            homepage: short biography, recent updates, research topics,
+            selected publications, and teaching or service.
+          </p>
+          <p>
+            Replace this paragraph with your own background, current position,
+            main research interests, and a concise statement about what problems
+            you want to solve. If you prefer a more formal tone, this section
+            can read like a short academic bio.
+          </p>
+        </section>
+
+        <section class="section" id="news" data-reveal>
+          <h2>News</h2>
+          <ul class="timeline">
             <li>
-              <span class="metric-value">01</span>
-              <span class="metric-label">Core focus area</span>
+              <span class="timeline-date">Mar 2026</span>
+              <div>
+                Launched this academic homepage on GitHub Pages.
+              </div>
             </li>
             <li>
-              <span class="metric-value">02</span>
-              <span class="metric-label">Selected projects</span>
+              <span class="timeline-date">Jan 2026</span>
+              <div>
+                Add your latest paper, project milestone, internship, or award
+                here.
+              </div>
             </li>
             <li>
-              <span class="metric-value">03</span>
-              <span class="metric-label">Contact channels</span>
+              <span class="timeline-date">Sep 2025</span>
+              <div>
+                Add one more update so the page does not look empty.
+              </div>
             </li>
           </ul>
         </section>
 
-        <section class="panel about" id="about" data-reveal>
-          <div class="section-heading">
-            <p class="eyebrow">ABOUT</p>
-            <h2>Short, direct, and easy to scan.</h2>
+        <section class="section" id="research" data-reveal>
+          <h2>Research Interests</h2>
+          <div class="tag-list" aria-label="Research interests">
+            <span>Machine Learning</span>
+            <span>Multimodal Models</span>
+            <span>Medical Image Analysis</span>
+            <span>Federated Learning</span>
+            <span>Model Merging</span>
           </div>
-          <div class="about-grid">
-            <p>
-              Use this section to describe your background, current work, and
-              strengths. Keep it concrete. A few sentences usually read better
-              than a long autobiography.
-            </p>
-            <p>
-              Add links to your GitHub, resume, blog, or social profiles. If
-              you want this site to stay minimal, that is usually enough.
-            </p>
-          </div>
+          <p>
+            This section should explain the themes that connect your projects.
+            Academic personal websites usually work better when they describe a
+            research agenda rather than only listing tools or buzzwords.
+          </p>
         </section>
 
-        <section class="panel projects" id="projects" data-reveal>
-          <div class="section-heading">
-            <p class="eyebrow">PROJECTS</p>
-            <h2>Show a few things that prove what you can do.</h2>
-          </div>
-          <div class="project-list">
-            <article class="project-card">
-              <p class="project-index">01</p>
-              <h3>Project One</h3>
-              <p>
-                Add a one-sentence explanation of the problem, your role, and
-                the outcome.
-              </p>
-              <a href="https://github.com/" target="_blank" rel="noreferrer"
-                >Repository</a
-              >
-            </article>
-            <article class="project-card">
-              <p class="project-index">02</p>
-              <h3>Project Two</h3>
-              <p>
-                If a project is private, describe the impact instead of linking
-                the source code.
-              </p>
-              <a href="https://github.com/" target="_blank" rel="noreferrer"
-                >Case Study</a
-              >
-            </article>
-            <article class="project-card">
-              <p class="project-index">03</p>
-              <h3>Project Three</h3>
-              <p>
-                Prefer strong specifics: metrics, users, performance gains, or
-                what you learned.
-              </p>
-              <a href="https://github.com/" target="_blank" rel="noreferrer"
-                >Demo</a
-              >
-            </article>
-          </div>
-        </section>
-
-        <section class="panel contact" id="contact" data-reveal>
-          <div class="section-heading">
-            <p class="eyebrow">CONTACT</p>
-            <h2>Make the next step obvious.</h2>
-          </div>
-          <div class="contact-box">
-            <p>
-              Replace the links below with your real contact details. For a
-              personal website, email plus one or two public profiles is
-              usually enough.
+        <section class="section" id="publications" data-reveal>
+          <h2>Selected Publications</h2>
+          <article class="publication">
+            <h3>Paper Title One</h3>
+            <p class="publication-meta">
+              <strong>Yipan Wei</strong>, Coauthor A, Coauthor B
             </p>
-            <div class="contact-links">
-              <a href="mailto:hello@example.com">hello@example.com</a>
-              <a href="https://github.com/your-handle" target="_blank" rel="noreferrer"
-                >GitHub</a
-              >
-              <a
-                href="https://www.linkedin.com/in/your-handle"
-                target="_blank"
-                rel="noreferrer"
-                >LinkedIn</a
-              >
-            </div>
-          </div>
+            <p class="publication-meta"><em>Conference or Journal</em>, 2026</p>
+            <p>
+              One or two sentences on the problem, the method, and the result.
+            </p>
+            <p class="publication-links">
+              <a href="#">Paper</a>
+              <a href="#">Code</a>
+              <a href="#">Slides</a>
+            </p>
+          </article>
+          <article class="publication">
+            <h3>Paper Title Two</h3>
+            <p class="publication-meta">
+              Coauthor A, <strong>Yipan Wei</strong>, Coauthor C
+            </p>
+            <p class="publication-meta"><em>Conference or Journal</em>, 2025</p>
+            <p>
+              Use this area to summarize impact clearly instead of pasting the
+              abstract.
+            </p>
+            <p class="publication-links">
+              <a href="#">Paper</a>
+              <a href="#">Poster</a>
+            </p>
+          </article>
         </section>
-      </main>
 
-      <footer class="footer">
-        <p>&copy; <span id="year"></span> Your Name. Built for GitHub Pages.</p>
-      </footer>
-    </div>
+        <section class="section" id="teaching" data-reveal>
+          <h2>Teaching & Service</h2>
+          <ul class="plain-list">
+            <li>Teaching Assistant, Course Name, University Name, 2025</li>
+            <li>Reviewer, Conference / Journal Name</li>
+            <li>Mentor, Lab reading group or student project</li>
+          </ul>
+        </section>
+
+        <section class="section" id="contact" data-reveal>
+          <h2>Contact</h2>
+          <p>
+            Email is usually the best contact method for academic websites.
+            You can also add office location, advisor, lab page, or a short note
+            on collaboration interests.
+          </p>
+          <p class="contact-line">
+            Email: <a href="mailto:hello@example.com">hello@example.com</a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Yipan Wei. Hosted on GitHub Pages.</p>
+    </footer>
   </body>
 </html>
