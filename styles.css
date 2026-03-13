@@ -22,8 +22,8 @@ body {
   background: var(--page-bg);
   color: var(--text);
   font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 a {
@@ -42,34 +42,34 @@ a:hover {
 }
 
 .site-header__inner {
-  width: min(1040px, calc(100% - 40px));
+  width: min(920px, calc(100% - 36px));
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 14px 0;
+  gap: 16px;
+  padding: 12px 0;
 }
 
 .site-title {
   color: var(--text);
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   font-weight: 700;
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.98rem;
+  gap: 12px;
+  font-size: 0.94rem;
 }
 
 .layout {
-  width: min(1040px, calc(100% - 40px));
-  margin: 28px auto 0;
+  width: min(920px, calc(100% - 36px));
+  margin: 22px auto 0;
   display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
-  gap: 44px;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 30px;
 }
 
 .sidebar {
@@ -78,35 +78,35 @@ a:hover {
 
 .profile-card {
   position: sticky;
-  top: 24px;
+  top: 18px;
   padding: 0;
   background: var(--panel-bg);
 }
 
 .profile-avatar {
-  width: 180px;
-  height: 220px;
+  width: 150px;
+  height: 180px;
   display: grid;
   place-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   border: 1px solid var(--border-strong);
   background: #f7f7f4;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
 }
 
 .profile-card h1 {
-  margin: 0 0 8px;
-  font-size: 1.9rem;
+  margin: 0 0 6px;
+  font-size: 1.65rem;
   line-height: 1.2;
 }
 
 .profile-role,
 .profile-affiliation {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 0.92rem;
 }
 
 .profile-role {
@@ -114,10 +114,10 @@ a:hover {
 }
 
 .profile-summary {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: var(--muted);
-  font-size: 0.96rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .profile-links {
@@ -125,8 +125,8 @@ a:hover {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 6px;
-  font-size: 0.98rem;
+  gap: 4px;
+  font-size: 0.92rem;
 }
 
 .content {
@@ -134,8 +134,8 @@ a:hover {
 }
 
 .section {
-  padding-bottom: 24px;
-  margin-bottom: 24px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -145,17 +145,17 @@ a:hover {
 }
 
 .section h2 {
-  margin: 0 0 14px;
-  font-size: 1.6rem;
+  margin: 0 0 10px;
+  font-size: 1.38rem;
   font-weight: 700;
 }
 
 .entry + .entry {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .section p {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .timeline,
@@ -166,7 +166,7 @@ a:hover {
 
 .timeline li,
 .plain-list li {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .timeline-date {
@@ -181,19 +181,19 @@ a:hover {
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 
 .tag-list span {
-  padding: 3px 8px;
+  padding: 2px 7px;
   border: 1px solid var(--border-strong);
   background: #fafaf8;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 
 .publication {
-  padding: 16px 0;
+  padding: 10px 0;
   border-top: 1px solid var(--border);
 }
 
@@ -203,20 +203,20 @@ a:hover {
 }
 
 .publication h3 {
-  margin: 0 0 8px;
-  font-size: 1.22rem;
-  line-height: 1.45;
+  margin: 0 0 5px;
+  font-size: 1.06rem;
+  line-height: 1.35;
 }
 
 .publication-meta {
   color: var(--muted);
-  font-size: 0.97rem;
+  font-size: 0.9rem;
 }
 
 .entry h3 {
-  margin: 0 0 6px;
-  font-size: 1.12rem;
-  line-height: 1.45;
+  margin: 0 0 4px;
+  font-size: 1.02rem;
+  line-height: 1.35;
 }
 
 .publication-links {
@@ -226,16 +226,16 @@ a:hover {
 }
 
 .contact-line {
-  font-size: 1rem;
+  font-size: 0.94rem;
 }
 
 .site-footer {
-  width: min(1040px, calc(100% - 40px));
+  width: min(920px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 24px 0 40px;
+  padding: 18px 0 28px;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 [data-reveal] {
@@ -254,7 +254,7 @@ a:hover {
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
   }
 
   .profile-card {
@@ -262,14 +262,14 @@ a:hover {
   }
 
   .profile-avatar {
-    width: 160px;
-    height: 200px;
+    width: 140px;
+    height: 170px;
   }
 }
 
 @media (max-width: 720px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .site-header__inner {
@@ -278,11 +278,11 @@ a:hover {
   }
 
   .site-title {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
   }
 
   .site-nav {
-    gap: 10px 14px;
-    font-size: 0.94rem;
+    gap: 8px 12px;
+    font-size: 0.9rem;
   }
 }
