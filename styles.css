@@ -21,7 +21,7 @@ body {
   margin: 0;
   background: var(--page-bg);
   color: var(--text);
-  font-family: "Times New Roman", "Songti SC", "SimSun", serif;
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
   font-size: 18px;
   line-height: 1.65;
 }
