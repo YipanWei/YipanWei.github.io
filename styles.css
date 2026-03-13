@@ -42,7 +42,7 @@ a:hover {
 }
 
 .site-header__inner {
-  width: min(920px, calc(100% - 36px));
+  width: min(980px, calc(100% - 36px));
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,7 @@ a:hover {
 }
 
 .layout {
-  width: min(920px, calc(100% - 36px));
+  width: min(980px, calc(100% - 36px));
   margin: 22px auto 0;
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
@@ -230,7 +230,7 @@ a:hover {
 }
 
 .site-footer {
-  width: min(920px, calc(100% - 36px));
+  width: min(980px, calc(100% - 36px));
   margin: 0 auto;
   padding: 18px 0 28px;
   border-top: 1px solid var(--border);
