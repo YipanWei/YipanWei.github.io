@@ -21,7 +21,7 @@ body {
   margin: 0;
   background: var(--page-bg);
   color: var(--text);
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", "Songti SC", "SimSun", serif;
   font-size: 18px;
   line-height: 1.65;
 }
@@ -109,6 +109,10 @@ a:hover {
   font-size: 0.98rem;
 }
 
+.profile-role {
+  font-style: italic;
+}
+
 .profile-summary {
   margin: 0 0 14px;
   color: var(--muted);
@@ -144,6 +148,10 @@ a:hover {
   margin: 0 0 14px;
   font-size: 1.6rem;
   font-weight: 700;
+}
+
+.entry + .entry {
+  margin-top: 16px;
 }
 
 .section p {
@@ -197,11 +205,18 @@ a:hover {
 .publication h3 {
   margin: 0 0 8px;
   font-size: 1.22rem;
+  line-height: 1.45;
 }
 
 .publication-meta {
   color: var(--muted);
   font-size: 0.97rem;
+}
+
+.entry h3 {
+  margin: 0 0 6px;
+  font-size: 1.12rem;
+  line-height: 1.45;
 }
 
 .publication-links {

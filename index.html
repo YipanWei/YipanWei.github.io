@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yipan Wei | Academic Homepage</title>
+    <title>魏一攀 | 医学 AI 个人主页</title>
     <meta
       name="description"
-      content="Academic homepage for Yipan Wei with biography, news, research, publications, and contact information."
+      content="魏一攀个人主页，聚焦医学 AI、多模态学习、医疗大模型与联邦学习。"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
@@ -14,14 +14,14 @@
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="site-title" href="#top">Yipan Wei</a>
+        <a class="site-title" href="#top">魏一攀</a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#news">News</a>
-          <a href="#research">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#contact">Contact</a>
+          <a href="#overview">概览</a>
+          <a href="#education">教育背景</a>
+          <a href="#skills">核心能力</a>
+          <a href="#projects">项目与论文</a>
+          <a href="#awards">荣誉奖项</a>
+          <a href="#contact">联系</a>
         </nav>
       </div>
     </header>
@@ -29,144 +29,165 @@
     <main class="layout" id="top">
       <aside class="sidebar" data-reveal>
         <div class="profile-card">
-          <div class="profile-avatar" aria-hidden="true">Photo</div>
-          <h1>Yipan Wei</h1>
-          <p class="profile-role">PhD Student / Researcher</p>
+          <div class="profile-avatar" aria-hidden="true">魏</div>
+          <h1>魏一攀</h1>
+          <p class="profile-role">Yipan Wei</p>
           <p class="profile-affiliation">
-            Department / Lab Name<br />
-            University Name
+            武汉大学计算机学院<br />
+            医学 AI / 多模态学习 / 联邦学习
           </p>
           <p class="profile-summary">
-            Research interests: machine learning, multimodal learning,
-            federated learning, and medical AI.
+            主投医学 + AI 算法实习，关注医疗多模态、医疗大模型、
+            医疗智能体与医疗影像理解。
           </p>
           <ul class="profile-links">
-            <li><a href="mailto:hello@example.com">Email</a></li>
+            <li><a href="tel:13930039150">电话：13930039150</a></li>
+            <li><a href="mailto:yipanwei@whu.edu.cn">邮箱：yipanwei@whu.edu.cn</a></li>
             <li><a href="https://github.com/YipanWei" target="_blank" rel="noreferrer">GitHub</a></li>
-            <li><a href="https://scholar.google.com/" target="_blank" rel="noreferrer">Google Scholar</a></li>
-            <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            <li><a href="#">CV</a></li>
           </ul>
         </div>
       </aside>
 
       <div class="content">
-        <section class="section" id="about" data-reveal>
-          <h2>Biography</h2>
+        <section class="section" id="overview" data-reveal>
+          <h2>个人概览</h2>
           <p>
-            I am a researcher working on machine learning, multimodal modeling,
-            and medical AI. This page is structured in the style of an academic
-            homepage: short biography, recent updates, research topics,
-            selected publications, and teaching or service.
+            目前聚焦医学 AI 研究与工程实践，研究兴趣包括联邦学习、多模态影像理解、
+            Vision-Language Model 知识迁移，以及隐私受限场景下的医疗智能系统构建。
           </p>
           <p>
-            Replace this paragraph with your own background, current position,
-            main research interests, and a concise statement about what problems
-            you want to solve. If you prefer a more formal tone, this section
-            can read like a short academic bio.
+            具备从问题定义、数据构建、模型搭建、训练调参与复现实验到论文写作的完整闭环能力，
+            能够独立推进研究型项目，也能支撑研究到落地的协作流程。
           </p>
-        </section>
-
-        <section class="section" id="news" data-reveal>
-          <h2>News</h2>
-          <ul class="timeline">
-            <li>
-              <span class="timeline-date">Mar 2026</span>
-              <div>
-                Launched this academic homepage on GitHub Pages.
-              </div>
-            </li>
-            <li>
-              <span class="timeline-date">Jan 2026</span>
-              <div>
-                Add your latest paper, project milestone, internship, or award
-                here.
-              </div>
-            </li>
-            <li>
-              <span class="timeline-date">Sep 2025</span>
-              <div>
-                Add one more update so the page does not look empty.
-              </div>
-            </li>
+          <ul class="plain-list">
+            <li>求职意向：医学 + AI 算法实习</li>
+            <li>重点方向：医疗多模态 / 医疗大模型 / 医疗智能体 / 医疗影像理解</li>
+            <li>研究产出：累计 5 项论文工作，其中第一作者 3 篇、共同第一作者 1 篇、第二作者 1 篇</li>
           </ul>
         </section>
 
-        <section class="section" id="research" data-reveal>
-          <h2>Research Interests</h2>
-          <div class="tag-list" aria-label="Research interests">
-            <span>Machine Learning</span>
-            <span>Multimodal Models</span>
-            <span>Medical Image Analysis</span>
-            <span>Federated Learning</span>
-            <span>Model Merging</span>
+        <section class="section" id="education" data-reveal>
+          <h2>教育背景</h2>
+          <article class="entry">
+            <h3>武汉大学，计算机学院，计算机技术（硕士）</h3>
+            <p class="publication-meta">2025.09 - 2027.06</p>
+          </article>
+          <article class="entry">
+            <h3>武汉大学，计算机学院，计算机科学与技术（弘毅）（本科）</h3>
+            <p class="publication-meta">2021.09 - 2025.06</p>
+            <p>GPA：3.88 / 4.00，均分 90+，CET-6：561</p>
+          </article>
+        </section>
+
+        <section class="section" id="skills" data-reveal>
+          <h2>核心能力</h2>
+          <div class="tag-list" aria-label="Core skills">
+            <span>联邦学习</span>
+            <span>多模态影像理解</span>
+            <span>VLM 知识迁移</span>
+            <span>医学报告生成</span>
+            <span>分布偏移鲁棒性</span>
+            <span>跨中心泛化</span>
           </div>
-          <p>
-            This section should explain the themes that connect your projects.
-            Academic personal websites usually work better when they describe a
-            research agenda rather than only listing tools or buzzwords.
-          </p>
-        </section>
-
-        <section class="section" id="publications" data-reveal>
-          <h2>Selected Publications</h2>
-          <article class="publication">
-            <h3>Paper Title One</h3>
-            <p class="publication-meta">
-              <strong>Yipan Wei</strong>, Coauthor A, Coauthor B
-            </p>
-            <p class="publication-meta"><em>Conference or Journal</em>, 2026</p>
-            <p>
-              One or two sentences on the problem, the method, and the result.
-            </p>
-            <p class="publication-links">
-              <a href="#">Paper</a>
-              <a href="#">Code</a>
-              <a href="#">Slides</a>
-            </p>
-          </article>
-          <article class="publication">
-            <h3>Paper Title Two</h3>
-            <p class="publication-meta">
-              Coauthor A, <strong>Yipan Wei</strong>, Coauthor C
-            </p>
-            <p class="publication-meta"><em>Conference or Journal</em>, 2025</p>
-            <p>
-              Use this area to summarize impact clearly instead of pasting the
-              abstract.
-            </p>
-            <p class="publication-links">
-              <a href="#">Paper</a>
-              <a href="#">Poster</a>
-            </p>
-          </article>
-        </section>
-
-        <section class="section" id="teaching" data-reveal>
-          <h2>Teaching & Service</h2>
           <ul class="plain-list">
-            <li>Teaching Assistant, Course Name, University Name, 2025</li>
-            <li>Reviewer, Conference / Journal Name</li>
-            <li>Mentor, Lab reading group or student project</li>
+            <li>研究方向：联邦学习、多模态影像理解、VLM 知识迁移</li>
+            <li>技术能力：可独立完成数据构建、模型搭建、训练调参与复现实验</li>
+            <li>场景经验：隐私受限协作、跨中心泛化、分布偏移鲁棒性、推理增强</li>
+            <li>协作能力：具备论文写作与投稿经验，可支撑研究到落地的全链路协作</li>
+          </ul>
+        </section>
+
+        <section class="section" id="projects" data-reveal>
+          <h2>代表项目与论文</h2>
+
+          <article class="publication">
+            <h3>国家重点研发计划子任务：医学报告生成流水线构建</h3>
+            <p class="publication-meta">
+              武汉大学杜博教授团队 · National Key Research and Development Program of China（2023YFC2705700）
+            </p>
+            <p>
+              负责医学报告生成子任务的端到端流程，包括数据构建、模型搭建与训练流程实现。
+              已完成数据集构建、训练管线搭建与实验迭代，形成可复现实验流程和阶段性可用结果。
+            </p>
+            <p>
+              受课题整体阶段调整影响，该子任务未推进至最终验收或上线环节，但相关方法与工程流程
+              已在组内沉淀并可复用。
+            </p>
+          </article>
+
+          <article class="publication">
+            <h3>FedProCL: Prototype-Guided Contrastive Federated Learning for Medical Image Classification under Concept Shift</h3>
+            <p class="publication-meta">第一作者 · BIBM（CCF-B）</p>
+            <p>
+              提出原型引导对比学习框架，以类原型作为稳定语义锚点对齐多中心特征分布，
+              在不共享数据前提下提升跨中心泛化与分类鲁棒性。
+            </p>
+          </article>
+
+          <article class="publication">
+            <h3>MedMerge: A Training-Free Model Merging Framework for Medical Knowledge Transfer into Vision-Language Models</h3>
+            <p class="publication-meta">第一作者 · TRPMS（JCR-Q1）</p>
+            <p>
+              提出 training-free 模型融合方法，将多源模型中的知识迁移到视觉语言模型，
+              无需再训练或访问原始数据，适配隐私受限医疗协作场景。
+            </p>
+          </article>
+
+          <article class="publication">
+            <h3>Rethinking Federated Prompt Learning for Medical Images: From Textual Tuning to Visual Manifold Anchoring</h3>
+            <p class="publication-meta">第一作者 · ICML（CCF-A，在投）</p>
+            <p>
+              提出“视觉流形锚定”范式，利用基于 LLM 的语义拓扑先验约束各客户端 prompt，
+              提升跨设备、跨协议和分布偏移场景下的稳定性与可迁移性。
+            </p>
+          </article>
+
+          <article class="publication">
+            <h3>Class Similarity-Based Multimodal Classification under Heterogeneous Category Sets</h3>
+            <p class="publication-meta">共同第一作者 · Pattern Recognition（JCR-Q1，在投）</p>
+            <p>
+              通过类别相似度建模解决异构数据源标签不对齐问题，无需强制统一标签体系，
+              仍可实现跨源泛化。
+            </p>
+          </article>
+
+          <article class="publication">
+            <h3>Injecting Reasoning into Vision-Language Models via Weight-Decomposed Merging</h3>
+            <p class="publication-meta">第二作者 · Neural Networks（JCR-Q1，在投）</p>
+            <p>
+              提出权重分解式融合策略，以可控方式向 VLM 注入推理能力，
+              降低能力干扰与灾难性遗忘，兼顾基础能力与推理表现。
+            </p>
+          </article>
+        </section>
+
+        <section class="section" id="awards" data-reveal>
+          <h2>荣誉奖项</h2>
+          <ul class="plain-list">
+            <li>2021-2022、2023-2024 学年武汉大学乙等奖学金</li>
+            <li>2022-2023 学年武汉大学丙等奖学金</li>
+            <li>2025 年武汉大学优秀毕业生</li>
+            <li>2023 年高教社杯全国大学生数学建模竞赛，全国二等奖</li>
           </ul>
         </section>
 
         <section class="section" id="contact" data-reveal>
-          <h2>Contact</h2>
-          <p>
-            Email is usually the best contact method for academic websites.
-            You can also add office location, advisor, lab page, or a short note
-            on collaboration interests.
-          </p>
+          <h2>自我评价</h2>
+          <ul class="plain-list">
+            <li>具备医学 AI 研究与工程背景，能够完成从问题定义到实验闭环的完整流程</li>
+            <li>具备论文写作与投稿经验，能支撑“研究到落地”的全链路协作</li>
+            <li>跨角色协作能力强，执行稳定</li>
+          </ul>
           <p class="contact-line">
-            Email: <a href="mailto:hello@example.com">hello@example.com</a>
+            联系方式：<a href="mailto:yipanwei@whu.edu.cn">yipanwei@whu.edu.cn</a> /
+            <a href="tel:13930039150">13930039150</a>
           </p>
         </section>
       </div>
     </main>
 
     <footer class="site-footer">
-      <p>&copy; <span id="year"></span> Yipan Wei. Hosted on GitHub Pages.</p>
+      <p>&copy; <span id="year"></span> 魏一攀 / Yipan Wei. Hosted on GitHub Pages.</p>
     </footer>
   </body>
 </html>
