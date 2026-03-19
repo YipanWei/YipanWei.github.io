@@ -17,10 +17,11 @@
         <a class="site-title" href="#top">Yipan Wei</a>
         <nav class="site-nav" aria-label="Primary">
           <a href="#bio">Short Bio</a>
-          <a href="#education">Education</a>
           <a href="#news">News</a>
           <a href="#publications">Selected Publications</a>
+          <a href="#program">Program</a>
           <a href="#awards">Awards</a>
+          <a href="#education">Education</a>
         </nav>
       </div>
     </header>
@@ -30,13 +31,12 @@
         <div class="profile-card">
           <div class="profile-avatar" aria-hidden="true">YW</div>
           <h1>Yipan Wei</h1>
-          <p class="profile-role">M.S. Student in Computer Technology</p>
+          <p class="profile-role">Master @ WHU</p>
           <p class="profile-affiliation">
-            School of Computer Science, Wuhan University<br />
-            Medical AI / Multimodal Learning / Federated Learning
+            Interested in Medical AI, Multimodal Learning, and Federated Learning
           </p>
           <ul class="profile-links">
-            <li><a href="mailto:yipanwei@whu.edu.cn">Email: yipanwei@whu.edu.cn</a></li>
+            <li><a href="mailto:yipanwei@whu.edu.cn">Email</a></li>
             <li><a href="https://github.com/YipanWei" target="_blank" rel="noreferrer">GitHub</a></li>
           </ul>
         </div>
@@ -46,34 +46,17 @@
         <section class="section" id="bio" data-reveal>
           <h2>Short Bio</h2>
           <p>
-            I work on medical AI research and engineering, with a particular
-            interest in federated learning, multimodal medical image analysis,
-            knowledge transfer for vision-language models, and intelligent
-            systems for privacy-constrained healthcare settings.
+            I am currently pursuing a Master's degree in Computer Technology at
+            Wuhan University, where I am advised by Prof. Bo Du. I received my
+            B.S. degree in Computer Science and Technology (Hongyi Program) from
+            Wuhan University in 2025.
           </p>
           <p>
-            I am currently pursuing an M.S. in Computer Technology at Wuhan
-            University. My work spans both research and engineering, and I am
-            comfortable driving the full research cycle independently, including
-            problem formulation, dataset construction, model development,
-            training and tuning, experiment reproduction, and academic writing.
+            My research focuses on Medical AI, Federated Learning, Multimodal
+            Learning, and Vision-Language Models. More broadly, I am interested
+            in building robust and practical intelligent systems for
+            privacy-constrained healthcare settings.
           </p>
-          <ul class="plain-list">
-            <li>Research interests: medical multimodal learning, medical large models, medical agents, and medical image understanding</li>
-            <li>Research output: 5 paper projects in total, including 3 first-author papers, 1 co-first-author paper, and 1 second-author paper</li>
-          </ul>
-        </section>
-
-        <section class="section" id="education" data-reveal>
-          <h2>Education</h2>
-          <article class="entry">
-            <h3>Wuhan University, School of Computer Science, M.S. in Computer Technology</h3>
-            <p class="publication-meta">Sep 2025 - Jun 2027</p>
-          </article>
-          <article class="entry">
-            <h3>Wuhan University, School of Computer Science, B.S. in Computer Science and Technology (Hongyi Program)</h3>
-            <p class="publication-meta">Sep 2021 - Jun 2025</p>
-          </article>
         </section>
 
         <section class="section" id="news" data-reveal>
@@ -90,6 +73,34 @@
         <section class="section" id="publications" data-reveal>
           <h2>Selected Publications</h2>
 
+          <article class="publication">
+            <h3>FedProCL: Prototype-Guided Contrastive Federated Learning for Medical Image Classification under Concept Shift</h3>
+            <p class="publication-meta">First author · BIBM (CCF-B)</p>
+          </article>
+
+          <article class="publication">
+            <h3>MedMerge: A Training-Free Model Merging Framework for Medical Knowledge Transfer into Vision-Language Models</h3>
+            <p class="publication-meta">First author · TRPMS (JCR Q1)</p>
+          </article>
+
+          <article class="publication">
+            <h3>Rethinking Federated Prompt Learning for Medical Images: From Textual Tuning to Visual Manifold Anchoring</h3>
+            <p class="publication-meta">First author · ICML (CCF-A, under review)</p>
+          </article>
+
+          <article class="publication">
+            <h3>Class Similarity-Based Multimodal Classification under Heterogeneous Category Sets</h3>
+            <p class="publication-meta">Co-first author · Pattern Recognition (JCR Q1, under review)</p>
+          </article>
+
+          <article class="publication">
+            <h3>Injecting Reasoning into Vision-Language Models via Weight-Decomposed Merging</h3>
+            <p class="publication-meta">Second author · Neural Networks (JCR Q1, under review)</p>
+          </article>
+        </section>
+
+        <section class="section" id="program" data-reveal>
+          <h2>Program</h2>
           <article class="publication">
             <h3>Medical Report Generation Pipeline for a National Key R&amp;D Program Subtask</h3>
             <p class="publication-meta">
@@ -109,60 +120,6 @@
               continued use within the group.
             </p>
           </article>
-
-          <article class="publication">
-            <h3>FedProCL: Prototype-Guided Contrastive Federated Learning for Medical Image Classification under Concept Shift</h3>
-            <p class="publication-meta">First author · BIBM (CCF-B)</p>
-            <p>
-              Proposed a prototype-guided contrastive learning framework that
-              uses class prototypes as stable semantic anchors to align
-              multi-center feature distributions, improving cross-center
-              generalization and classification robustness without sharing data.
-            </p>
-          </article>
-
-          <article class="publication">
-            <h3>MedMerge: A Training-Free Model Merging Framework for Medical Knowledge Transfer into Vision-Language Models</h3>
-            <p class="publication-meta">First author · TRPMS (JCR Q1)</p>
-            <p>
-              Proposed a training-free model merging method that transfers
-              knowledge from multiple source models into a vision-language model
-              without retraining or access to the original data, making it well
-              suited to privacy-constrained medical collaboration scenarios.
-            </p>
-          </article>
-
-          <article class="publication">
-            <h3>Rethinking Federated Prompt Learning for Medical Images: From Textual Tuning to Visual Manifold Anchoring</h3>
-            <p class="publication-meta">First author · ICML (CCF-A, under review)</p>
-            <p>
-              Proposed a visual manifold anchoring paradigm that uses
-              LLM-derived semantic topology priors to regularize client prompts,
-              improving stability and transferability across devices, protocols,
-              and distribution shifts.
-            </p>
-          </article>
-
-          <article class="publication">
-            <h3>Class Similarity-Based Multimodal Classification under Heterogeneous Category Sets</h3>
-            <p class="publication-meta">Co-first author · Pattern Recognition (JCR Q1, under review)</p>
-            <p>
-              Modeled class similarity to address label misalignment across
-              heterogeneous data sources, enabling cross-source generalization
-              without forcing a unified label space.
-            </p>
-          </article>
-
-          <article class="publication">
-            <h3>Injecting Reasoning into Vision-Language Models via Weight-Decomposed Merging</h3>
-            <p class="publication-meta">Second author · Neural Networks (JCR Q1, under review)</p>
-            <p>
-              Proposed a weight-decomposed merging strategy to inject reasoning
-              ability into vision-language models in a controllable way, reducing
-              interference and catastrophic forgetting while preserving both base
-              capabilities and reasoning performance.
-            </p>
-          </article>
         </section>
 
         <section class="section" id="awards" data-reveal>
@@ -173,6 +130,18 @@
             <li>Outstanding Graduate, Wuhan University, 2025</li>
             <li>National Second Prize, China Undergraduate Mathematical Contest in Modeling, 2023</li>
           </ul>
+        </section>
+
+        <section class="section" id="education" data-reveal>
+          <h2>Education</h2>
+          <article class="entry">
+            <h3>Wuhan University, School of Computer Science, M.S. in Computer Technology</h3>
+            <p class="publication-meta">Sep 2025 - Jun 2027</p>
+          </article>
+          <article class="entry">
+            <h3>Wuhan University, School of Computer Science, B.S. in Computer Science and Technology (Hongyi Program)</h3>
+            <p class="publication-meta">Sep 2021 - Jun 2025</p>
+          </article>
         </section>
       </div>
     </main>
