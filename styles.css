@@ -86,14 +86,11 @@ a:hover {
 .profile-avatar {
   width: 150px;
   height: 180px;
-  display: grid;
-  place-items: center;
+  display: block;
   margin-bottom: 14px;
   border: 1px solid var(--border-strong);
-  background: #f7f7f4;
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 400;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .profile-card h1 {
