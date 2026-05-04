@@ -64,6 +64,11 @@ a:hover {
   font-size: 0.94rem;
 }
 
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+}
+
 .layout {
   width: min(1200px, calc(100% - 36px));
   margin: 22px auto 0;
@@ -128,6 +133,31 @@ a:hover {
 
 .content {
   min-width: 0;
+}
+
+.content-page {
+  width: min(900px, calc(100% - 36px));
+  margin: 28px auto 0;
+}
+
+.page-hero {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero h1 {
+  margin: 0 0 8px;
+  font-size: 1.72rem;
+  line-height: 1.2;
+}
+
+.page-hero p {
+  margin: 0 0 8px;
+}
+
+.back-link {
+  font-size: 0.92rem;
 }
 
 .section {
@@ -222,6 +252,33 @@ a:hover {
   gap: 12px;
 }
 
+.note-entry {
+  padding: 6px 0;
+}
+
+.note-entry h3,
+.note-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.04rem;
+  line-height: 1.35;
+}
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.note-card {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+}
+
+.note-card p {
+  margin: 0;
+}
+
 .contact-line {
   font-size: 0.94rem;
 }
@@ -281,5 +338,9 @@ a:hover {
   .site-nav {
     gap: 8px 12px;
     font-size: 0.9rem;
+  }
+
+  .note-grid {
+    grid-template-columns: 1fr;
   }
 }

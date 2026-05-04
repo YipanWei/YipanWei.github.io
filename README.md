@@ -6,6 +6,8 @@ GitHub Pages.
 ## Files
 
 - `index.html`: page structure and text content
+- `research.html`: research notes and paper reading page
+- `summary.pdf`: paper reading notes linked from the research notes page
 - `styles.css`: visual design and responsive layout
 - `script.js`: small interactions and footer year
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
