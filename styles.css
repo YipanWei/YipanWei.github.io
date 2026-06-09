@@ -104,15 +104,10 @@ a:hover {
   line-height: 1.2;
 }
 
-.profile-role,
 .profile-affiliation {
   margin: 0 0 8px;
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-.profile-role {
-  font-style: italic;
 }
 
 .profile-summary {
@@ -194,6 +189,58 @@ a:hover {
 .timeline li,
 .plain-list li {
   margin-bottom: 6px;
+}
+
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.news-list li {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+}
+
+.news-date {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.news-body {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+}
+
+.news-icon {
+  width: 1.35em;
+  height: 1.35em;
+  flex: 0 0 auto;
+  display: inline-block;
+  text-align: center;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+.award-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.award-list li {
+  margin-bottom: 6px;
+}
+
+.award-date {
+  font-weight: 400;
 }
 
 .timeline-date {
