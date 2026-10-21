@@ -7,12 +7,20 @@ GitHub Pages.
 
 - `index.html`: page structure and text content
 - `research.html`: research notes and paper reading page
+- `failures.html`: unsuccessful submissions, ordered by the relevant official notification date
 - `summary.pdf`: paper reading notes linked from the research notes page
 - `styles.css`: visual design and responsive layout
 - `script.js`: small interactions and footer year
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
 
 ## How to customize
+
+`failures.html` uses one sentence per submission, without review-stage labels.
+Each conference links to its official schedule (checked 2026-10-21).
+The ordering references are ICCV 2025 (2025-06-26), AAAI 2026 (2025-09-15),
+NeurIPS 2025 (2025-09-18), CVPR 2026 (2026-02-20), and AAAI 2027 (2026-09-24).
+Dates are not displayed on the page. Outcomes come from the owner, not from
+public schedules; add personal dates or reflections only when supplied.
 
 1. Replace placeholder text in `index.html`.
 2. Update the contact links in the contact section.
