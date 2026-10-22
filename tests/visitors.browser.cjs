@@ -7,6 +7,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'test-results');
 const endpoint = 'https://visitor-api.invalid/visits';
+const generatedAt = '2026-10-22T12:00:00.000Z';
 // Synthetic test data lives here only, never in the deployed page or database.
 const fixture = { views: 10, points: [
   { country: 'CN', latitude: 30, longitude: 114, views: 4 },
@@ -25,8 +26,9 @@ async function main() {
     let external = 0;
     await local.route('https://**/*', (route) => { external++; return route.abort(); });
     await local.goto(pathToFileURL(path.join(root, 'index.html')).href);
-    assert.equal(await local.locator('#visitor-count-status').isVisible(), false);
-    assert.equal(await local.locator('#visitor-map-status').isVisible(), false);
+    const saved = JSON.parse(fs.readFileSync(path.join(root, 'assets/visitor-stats.json'), 'utf8'));
+    assert.equal(await local.locator('.visitor-digits').getAttribute('aria-label'), `${saved.views} homepage views`);
+    assert.match(await local.locator('#visitor-count-status').innerText(), /Updated/);
     assert.equal(await local.getByText(/Local preview/).count(), 0);
     assert.equal(external, 0);
     assert.equal(await local.locator('.visitor-stats h2').count(), 0);
@@ -48,7 +50,7 @@ async function main() {
     await local.close();
     console.log('PASS local preview, map asset, zero tracking, 1280/390/320 layouts');
 
-    for (const scenario of ['success', 'zero', 'large', 'unknown', 'invalid', 'error', 'limited', 'timeout', 'gpc', 'dnt', 'unconfigured', 'other-host']) {
+    for (const scenario of ['success', 'zero', 'large', 'unknown', 'invalid', 'missing', 'error', 'limited', 'timeout', 'gpc', 'dnt', 'unconfigured', 'other-host']) {
       const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
       const calls = [];
       const pageErrors = [];
@@ -62,6 +64,15 @@ async function main() {
           const name = url.pathname === '/' ? '/index.html' : decodeURIComponent(url.pathname);
           let body = fs.readFileSync(path.join(root, name));
           if (name === '/index.html') body = body.toString().replace(/data-api-url="[^"]*"/, `data-api-url="${scenario === 'unconfigured' ? '' : endpoint}"`);
+          if (name === '/assets/visitor-stats.js') {
+            if (scenario === 'missing') return route.abort();
+            let data = fixture;
+            if (scenario === 'zero') data = { views: 0, points: [] };
+            if (scenario === 'unknown') data = { views: 3, points: [] };
+            if (scenario === 'large') data = { views: Number.MAX_SAFE_INTEGER, points: [] };
+            if (scenario === 'invalid') data = { views: 1, points: [{ country: '<script>', latitude: 500, longitude: 0, views: 3 }] };
+            body = `window.VISITOR_STATS = ${JSON.stringify({ ...data, generatedAt })};`;
+          }
           const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg' };
           return route.fulfill({ body, contentType: types[path.extname(name)] || 'application/octet-stream' });
         }
@@ -70,31 +81,21 @@ async function main() {
         if (scenario === 'timeout') return;
         if (scenario === 'error') return route.abort();
         if (scenario === 'limited' && route.request().method() === 'POST') return route.fulfill({ status: 429 });
-        let data = fixture;
-        if (scenario === 'zero') data = { views: 0, points: [] };
-        if (scenario === 'unknown') data = { views: 3, points: [] };
-        if (scenario === 'large') data = { views: Number.MAX_SAFE_INTEGER, points: [] };
-        if (scenario === 'invalid') data = { views: 1, points: [{ country: '<script>', latitude: 500, longitude: 0, views: 3 }] };
-        return route.fulfill({ json: data, headers: { 'Access-Control-Allow-Origin': 'https://yipanwei.github.io' } });
+        // The live collector must never supply the displayed counter or locations.
+        return route.fulfill({ json: { views: 999, points: [] }, headers: { 'Access-Control-Allow-Origin': 'https://yipanwei.github.io' } });
       });
       await page.goto(`https://${scenario === 'other-host' ? 'other.invalid' : 'yipanwei.github.io'}/`);
       const status = page.locator('#visitor-count-status');
-      if (['gpc', 'dnt', 'unconfigured', 'other-host'].includes(scenario)) {
-        assert.equal(calls.length, 0);
-        if (scenario === 'other-host') {
-          assert.equal(await status.isVisible(), false);
-          assert.equal(await page.locator('#visitor-map-status').isVisible(), false);
-        } else {
-          assert.match(await status.innerText(), /disabled|not enabled/);
-        }
-      } else if (['invalid', 'error', 'timeout'].includes(scenario)) {
-        if (scenario === 'timeout') await page.clock.fastForward(11000);
-        await page.waitForFunction(() => document.querySelector('#visitor-count-status').textContent.includes('unavailable'));
+      if (scenario === 'timeout') await page.clock.fastForward(5000);
+      if (['gpc', 'dnt', 'unconfigured', 'other-host'].includes(scenario)) assert.equal(calls.length, 0);
+      else assert.deepEqual(calls, ['POST'], 'No browser GET to Cloudflare, and no write retries');
+      if (['invalid', 'missing'].includes(scenario)) {
+        assert.match(await status.innerText(), /unavailable/);
         assert.equal(await page.locator('.visitor-map-dot').count(), 0);
-        assert.deepEqual(calls, ['POST']);
       } else {
-        await page.waitForFunction(() => document.querySelector('#visitor-count-status').textContent === 'Recorded page views');
-        assert.deepEqual(calls, scenario === 'limited' ? ['POST', 'GET'] : ['POST']);
+        assert.equal(await status.innerText(), 'Updated 2026-10-22 12:00 UTC');
+        const expectedViews = scenario === 'zero' ? 0 : scenario === 'unknown' ? 3 : scenario === 'large' ? Number.MAX_SAFE_INTEGER : 10;
+        assert.equal(await page.locator('.visitor-digits').getAttribute('aria-label'), `${expectedViews} homepage views`);
         if (scenario === 'zero') assert.equal(await page.locator('.visitor-digits').getAttribute('aria-label'), '0 homepage views');
         if (scenario === 'unknown') assert.equal(await page.locator('#visitor-map-status').innerText(), 'No located visits yet');
         if (scenario === 'large') {

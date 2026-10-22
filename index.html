@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
+    <script defer src="./assets/visitor-stats.js"></script>
     <script defer src="./visitors.js"></script>
   </head>
   <body>
@@ -207,7 +208,8 @@
       </section>
       <details class="visitor-privacy">
         <summary>Visitor statistics &amp; privacy</summary>
-        <p>This site's statistics endpoint uses Cloudflare's IP geolocation to count page views and place approximate locations on this map.
+        <p>The map and counter display a periodically updated snapshot hosted with this page, not a live response from Cloudflare.
+          A separate background request records page views using Cloudflare's IP geolocation when the connection is available.
           Full IP addresses, daily visit counts, and approximate locations are stored privately with no automatic expiration, until deleted by the site owner.
           Only cumulative counts, country codes, and coordinates rounded to a two-degree grid are public; IP addresses are never displayed on the map or returned by its public API.
           Cloudflare processes connection information to serve and rate-limit requests. VPNs and shared networks can affect locations.

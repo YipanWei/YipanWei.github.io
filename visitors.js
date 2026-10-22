@@ -60,7 +60,7 @@
     if (!data || !Number.isSafeInteger(data.views) || data.views < 0 || !Array.isArray(data.points)) return false;
     let located = 0;
     for (const point of data.points) {
-      if (!point || !/^[A-Z]{2}$/.test(point.country)
+      if (!point || typeof point.country !== 'string' || !/^[A-Z]{2}$/.test(point.country)
         || !Number.isFinite(point.latitude) || Math.abs(point.latitude) > 90
         || !Number.isFinite(point.longitude) || Math.abs(point.longitude) > 180
         || !Number.isSafeInteger(point.views) || point.views < 1) return false;
@@ -72,56 +72,48 @@
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') tooltip.hidden = true;
   });
-  renderCount(null);
+  // Display only same-site static data. Collection failures never erase it.
+  const snapshot = window.VISITOR_STATS;
+  if (validate(snapshot) && typeof snapshot.generatedAt === 'string'
+    && Number.isFinite(Date.parse(snapshot.generatedAt))) {
+    renderCount(snapshot.views);
+    renderMap(snapshot.points);
+    const updated = new Date(snapshot.generatedAt).toISOString();
+    countStatus.textContent = `Updated ${updated.slice(0, 10)} ${updated.slice(11, 16)} UTC`;
+    const countries = new Set(snapshot.points.map((point) => point.country)).size;
+    mapStatus.textContent = countries
+      ? `${countries} ${countries === 1 ? 'country / region' : 'countries / regions'}`
+      : snapshot.views === 0 ? 'No visits yet' : 'No located visits yet';
+  } else {
+    renderCount(null);
+    countStatus.textContent = 'Statistics unavailable';
+    mapStatus.textContent = 'Locations unavailable';
+  }
   // File previews and copies of the site must never pollute shared statistics.
   if (location.protocol !== 'https:' || location.hostname !== section.dataset.productionHost) {
-    countStatus.textContent = '';
-    mapStatus.textContent = '';
-    countStatus.hidden = true;
-    mapStatus.hidden = true;
     return;
   }
   if (navigator.globalPrivacyControl || navigator.doNotTrack === '1' || window.doNotTrack === '1') {
-    countStatus.textContent = 'Statistics disabled by privacy settings';
-    mapStatus.textContent = 'Statistics disabled';
     return;
   }
   if (!section.dataset.apiUrl) {
-    countStatus.textContent = 'Statistics not enabled';
-    mapStatus.textContent = 'Statistics not enabled';
     return;
   }
 
-  async function loadStatistics() {
+  async function recordVisit() {
     const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), 10000);
-    countStatus.textContent = 'Loading...';
-    mapStatus.textContent = 'Loading...';
+    const timeout = window.setTimeout(() => controller.abort(), 4000);
     try {
       const endpoint = new URL(section.dataset.apiUrl);
       if (endpoint.protocol !== 'https:') throw new Error('HTTPS required');
       const options = { credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer', signal: controller.signal };
       // One write per page load. Never retry a timed-out POST, which may have committed.
-      let response = await fetch(endpoint, { ...options, method: 'POST' });
-      if (response.status === 429) response = await fetch(endpoint, options);
-      if (!response.ok || response.status === 204) throw new Error('Statistics unavailable');
-      const data = await response.json();
-      if (!validate(data)) throw new Error('Invalid statistics');
-      renderMap(data.points);
-      renderCount(data.views);
-      countStatus.textContent = 'Recorded page views';
-      const countries = new Set(data.points.map((point) => point.country)).size;
-      mapStatus.textContent = countries
-        ? `${countries} ${countries === 1 ? 'country / region' : 'countries / regions'}`
-        : data.views === 0 ? 'No visits yet' : 'No located visits yet';
+      await fetch(endpoint, { ...options, method: 'POST' });
     } catch {
-      renderCount(null);
-      map.replaceChildren();
-      countStatus.textContent = 'Count temporarily unavailable';
-      mapStatus.textContent = 'Locations temporarily unavailable';
+      // Some visitors cannot reach workers.dev. Preserve the published snapshot.
     } finally {
       window.clearTimeout(timeout);
     }
   }
-  loadStatistics();
+  recordVisit();
 })();

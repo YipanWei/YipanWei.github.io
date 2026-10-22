@@ -13,6 +13,8 @@ GitHub Pages.
 - `script.js`: small interactions and footer year
 - `visitors.js`: first-party homepage counter and visitor map
 - `assets/visitor-world.svg`: local world outline (no third-party runtime)
+- `assets/visitor-stats.js` and `.json`: public aggregate snapshots, never raw IP records
+- `tools/sync-visitor-stats.mjs`: server-side snapshot export
 - `visitor-api/`: Cloudflare Worker and D1 schema for shared visitor records
 - `tests/`: visitor API and browser regression checks
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
@@ -33,18 +35,60 @@ public schedules; add personal dates or reflections only when supplied.
 ## Visitor statistics
 
 The homepage renders a seven-segment counter and its own world map. There are
-no embedded statistics widgets or external map scripts. Both use one
-first-party endpoint and database. The counter measures recorded page loads,
+no embedded statistics widgets or external map scripts. Both display a static
+snapshot served by GitHub Pages, backed by one database. The counter measures recorded page loads,
 not unique people; only the homepage loads it, not the subpages.
 
 The API is deployed in the owner's Cloudflare account, and `data-api-url` on
 `.visitor-stats` points to `https://yipanwei-visitors.ersonal-eb.workers.dev/visits`.
-Cloudflare deployment, remote database queries, and the public endpoint GET
-check succeeded on 2026-10-22. The endpoint returned HTTP 200 with the expected
-CORS origin and an empty initial dataset. No production test visits were
-written; real recording starts when the updated homepage is published.
+This endpoint is used only for best-effort background recording in the browser.
+The display does not wait for, read, or depend on its response. A blocked or
+timed-out request cannot erase the static counter or map. Privacy opt-outs and
+local previews still display the public snapshot but never record visits.
 The local world outline always renders. Unavailable counts use dashes, not
 invented zeros, and the empty map has no fictional visitor points.
+
+### Static display and server-side updates
+
+The flow is `Cloudflare GET -> server export -> static Pages assets -> browser`.
+`tools/sync-visitor-stats.mjs` reads the public aggregate endpoint with GET,
+validates the payload, and writes matching JSON and JavaScript snapshots.
+Only views, start/update timestamps, and country/coordinate/count fields are
+allowed through. Unexpected fields (including IPs) are stripped. Exporting
+never increments views or records the exporting server's location.
+
+The deployment workflow refreshes the snapshot before publishing, including
+on an hourly schedule at minute 23 UTC. It never auto-commits data or changes
+to Git. If export/validation fails, the workflow fails before deploying, so
+the last published site stays in place rather than reverting to the older
+snapshot in the repository. This also means a code deployment must wait until
+the statistics endpoint is reachable by the runner.
+
+The same export can be run on this research server using its proxy settings:
+
+```bash
+node tools/sync-visitor-stats.mjs
+```
+
+It uses curl (including `HTTPS_PROXY`), needs no Cloudflare credentials, and
+does not publish anything by itself. Generated files are safe public summaries.
+The JavaScript asset allows direct `file://` previews without a fetch server.
+The visible update time is the snapshot time, not a claim of live traffic.
+
+GitHub schedules are best-effort and can be delayed; public-repository schedules
+can be disabled after 60 days without repository activity. Monitor Actions or
+use workflow_dispatch to refresh manually. See
+[GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+The actual delay also includes deployment and browser/CDN caching.
+
+**This solves display availability, not blocked visitor collection.** Visitors
+who can load the homepage can read its static statistics even without access
+to workers.dev. Their background POST may still fail and go uncounted. To
+collect those visits requires a visitor-reachable HTTPS relay/domain. A job
+on an outbound-only research server cannot discover other visitors' IPs.
+Do not proxy POSTs blindly: Cloudflare would geolocate/store the relay's IP.
+A future relay needs authenticated forwarding, trusted client-IP handling,
+and location lookup for that client IP; never trust arbitrary browser headers.
 
 ### One-time API deployment
 
@@ -74,9 +118,11 @@ to HTML, commit secrets, or enable request logging containing IP addresses.
 If the account already uses the configured rate-limit namespace IDs, choose
 two unused positive integer strings before deploying.
 
-After deployment, visit the public homepage once and check for a count of 1
-(on a new database) and a dot when edge geolocation is available. Check browser
-developer tools for one POST and no requests to analytics widgets.
+After deployment, check that the public page loads the same-site snapshot and
+world outline. A new visit appears after the next successful snapshot refresh,
+not immediately. Check browser developer tools for at most one background POST
+and no GET to Cloudflare. Blocking workers.dev must not clear existing digits
+or points. Only successful recordings with known locations create map dots.
 The local tests do not verify the deployed Cloudflare account or geolocation.
 
 ### Data and privacy
@@ -102,10 +148,10 @@ The local tests do not verify the deployed Cloudflare account or geolocation.
   route requests, geolocate, and apply short-lived rate limits. Worker
   observability is disabled; infrastructure processing is not eliminated.
 - Writes are limited to approximately 10 per IP per minute per edge location;
-  reads to 60. Excess writes read the existing total instead. These are basic
+  reads to 60. Excess writes leave the static display unchanged. These are basic
   abuse controls, not bot-proof analytics; Origin checks are not authentication.
-- Requests run only on the configured HTTPS hostname. File previews, localhost,
-  other domains, Do Not Track and Global Privacy Control never send statistics.
+- Collection requests run only on the configured HTTPS hostname. File previews,
+  localhost, other domains, Do Not Track and Global Privacy Control never record visits.
   No cookies or local-storage history. History starts at activation and cannot
   recover past visits. Opt-outs, blockers, failures and limits cause undercounting.
 
@@ -144,6 +190,7 @@ Tests require Node 22.13+ (SQLite) and Playwright with Chromium:
 
 ```bash
 node --test tests/visitor-worker.test.mjs
+node --test tests/visitor-snapshot.test.mjs
 node tests/visitors.browser.cjs
 ```
 
@@ -151,8 +198,10 @@ For an existing Playwright installation, set `PLAYWRIGHT_PATH` to its package
 directory. Browser tests intercept the API and use test-only fixtures, never
 send actual visits, and save screenshots in ignored `test-results/`.
 They cover local preview, host/privacy guards, zeros, large counts, invalid
-responses, errors, timeouts, rate-limit recovery, marker interactions, map
-pixels and mobile overflow. API tests run the real schema in SQLite with a
+or missing snapshots, blocked/failed/timed-out collectors, ignored live responses,
+marker interactions, map pixels and mobile overflow. Snapshot tests enforce
+private-field stripping and preservation of last good files on failure.
+API tests run the real schema in SQLite with a
 D1 adapter; Cloudflare edge behavior still needs the deployment smoke check.
 
 ## How to deploy

@@ -1,0 +1,14 @@
+// Generated public statistics; no private IP records.
+window.VISITOR_STATS = {
+  "views": 3,
+  "startedAt": "2026-10-22 12:39:44",
+  "points": [
+    {
+      "country": "JP",
+      "latitude": 36,
+      "longitude": 140,
+      "views": 3
+    }
+  ],
+  "generatedAt": "2026-10-22T12:44:43.089Z"
+};
