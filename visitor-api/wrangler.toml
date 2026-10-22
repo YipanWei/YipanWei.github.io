@@ -1,0 +1,25 @@
+name = "yipanwei-visitors"
+main = "worker.mjs"
+compatibility_date = "2026-10-22"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGIN = "https://yipanwei.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "yipanwei-visitors"
+database_id = "a0c9b2a1-8c7c-4506-8d61-6f8fdc0dc38a"
+
+[[ratelimits]]
+name = "WRITE_LIMITER"
+namespace_id = "2026102201"
+simple = { limit = 10, period = 60 }
+
+[[ratelimits]]
+name = "READ_LIMITER"
+namespace_id = "2026102202"
+simple = { limit = 60, period = 60 }
+
+[observability]
+enabled = false
