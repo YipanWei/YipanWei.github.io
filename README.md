@@ -32,7 +32,18 @@ public schedules; add personal dates or reflections only when supplied.
 2. Update the contact links in the contact section.
 3. If needed, change colors and spacing in `styles.css`.
 
-## Visitor statistics
+## Visitor statistics (disabled)
+
+Disabled in the site source on 2026-10-23. The homepage no longer includes the
+counter, map, privacy panel, or collection scripts. The deployment workflow
+has no scheduled refresh or Cloudflare dependency and excludes the visitor
+scripts and assets from the published site. These changes take effect online
+after an owner-approved push and successful deployment.
+
+The former implementation is retained in the repository for possible reuse.
+The deployed Cloudflare Worker and existing private D1 records have not been
+deleted or modified; previously loaded or cached pages may still submit visits.
+The notes below document the former implementation, not active site behavior.
 
 The homepage renders a seven-segment counter and its own world map. There are
 no embedded statistics widgets or external map scripts. Both display a static
@@ -195,11 +206,11 @@ node tests/visitors.browser.cjs
 ```
 
 For an existing Playwright installation, set `PLAYWRIGHT_PATH` to its package
-directory. Browser tests intercept the API and use test-only fixtures, never
-send actual visits, and save screenshots in ignored `test-results/`.
-They cover local preview, host/privacy guards, zeros, large counts, invalid
-or missing snapshots, blocked/failed/timed-out collectors, ignored live responses,
-marker interactions, map pixels and mobile overflow. Snapshot tests enforce
+directory. Browser tests verify the removed feature stays absent, no statistics
+scripts or network requests load, and local/production-host layouts fit at
+desktop and mobile sizes. They intercept production-host requests locally and
+save screenshots in ignored `test-results/`; no real visits are sent.
+The retained snapshot tests enforce
 private-field stripping and preservation of last good files on failure.
 API tests run the real schema in SQLite with a
 D1 adapter; Cloudflare edge behavior still needs the deployment smoke check.

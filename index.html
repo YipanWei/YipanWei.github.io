@@ -10,8 +10,6 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
-    <script defer src="./assets/visitor-stats.js"></script>
-    <script defer src="./visitors.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -187,35 +185,6 @@
     </main>
 
     <footer class="site-footer">
-      <section class="visitor-stats" aria-label="Visitor statistics" data-production-host="yipanwei.github.io" data-api-url="https://yipanwei-visitors.ersonal-eb.workers.dev/visits">
-        <div class="visitor-counter">
-          <div class="visitor-digits" role="img" aria-label="View count unavailable">
-            <span class="visitor-digits-fallback">------</span>
-          </div>
-          <p class="visitor-status" id="visitor-count-status" role="status">JavaScript required</p>
-        </div>
-        <div class="visitor-geography">
-          <div class="visitor-map">
-            <img src="./assets/visitor-world.svg" width="1000" height="500" alt="World map" />
-            <svg class="visitor-map-points" viewBox="0 0 1000 500" aria-label="Approximate visitor locations"></svg>
-            <p class="visitor-map-tooltip" role="status" hidden></p>
-          </div>
-          <div class="visitor-map-caption">
-            <p class="visitor-status" id="visitor-map-status" role="status">Statistics unavailable</p>
-            <span class="visitor-map-key">Visitor locations</span>
-          </div>
-        </div>
-      </section>
-      <details class="visitor-privacy">
-        <summary>Visitor statistics &amp; privacy</summary>
-        <p>The map and counter display a periodically updated snapshot hosted with this page, not a live response from Cloudflare.
-          A separate background request records page views using Cloudflare's IP geolocation when the connection is available.
-          Full IP addresses, daily visit counts, and approximate locations are stored privately with no automatic expiration, until deleted by the site owner.
-          Only cumulative counts, country codes, and coordinates rounded to a two-degree grid are public; IP addresses are never displayed on the map or returned by its public API.
-          Cloudflare processes connection information to serve and rate-limit requests. VPNs and shared networks can affect locations.
-          Statistics requests are disabled when Do Not Track or Global Privacy Control is enabled.
-          Map outlines: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Natural Earth</a>.</p>
-      </details>
       <p>&copy; <span id="year"></span> Yipan Wei. Hosted on GitHub Pages.</p>
     </footer>
   </body>
