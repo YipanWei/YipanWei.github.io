@@ -37,7 +37,7 @@ a:hover {
 }
 
 .site-header {
-  background: #ffffff;
+  background: var(--page-bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -56,6 +56,77 @@ a:hover {
   font-size: 1.28rem;
   font-weight: 700;
 }
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--link);
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle[aria-pressed="true"] { border-color: var(--border-strong); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.theme-toggle svg { flex-shrink: 0; }
+
+.theme-tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: max-content;
+  padding: 4px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  background: var(--panel-bg);
+  color: var(--text);
+  font: 12px/1.4 monospace;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.theme-toggle:hover .theme-tooltip,
+.theme-toggle:focus-visible .theme-tooltip { visibility: visible; }
+
+:root[data-theme="terminal"] {
+  color-scheme: dark;
+  --page-bg: #171918;
+  --panel-bg: #171918;
+  --border: #383e3a;
+  --border-strong: #69786e;
+  --text: #e3e5df;
+  --muted: #b0b8b2;
+  --link: #e9c879;
+  --link-hover: #8edbdf;
+}
+
+[data-theme="terminal"] body {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+[data-theme="terminal"] h1,
+[data-theme="terminal"] h2 { color: #8be0b0; }
+[data-theme="terminal"] .site-title { color: #8be0b0; }
+[data-theme="terminal"] .news-list li { grid-template-columns: 8ch minmax(0, 1fr); }
 
 .site-nav {
   display: flex;
@@ -485,7 +556,7 @@ a:hover {
 .visitor-privacy summary { cursor: pointer; width: fit-content; }
 .visitor-privacy p { max-width: 760px; }
 
-[data-reveal] {
+.has-reveal [data-reveal] {
   opacity: 0;
   transform: translateY(8px);
   transition:
@@ -493,7 +564,7 @@ a:hover {
     transform 220ms ease;
 }
 
-[data-reveal].is-visible {
+.has-reveal [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }

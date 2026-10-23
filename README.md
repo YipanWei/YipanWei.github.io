@@ -7,7 +7,7 @@ GitHub Pages.
 
 - `index.html`: page structure and text content
 - `research.html`: research notes and paper reading page
-- `failures.html`: unsuccessful submissions, ordered by the relevant official notification date
+- `failures.html`: Attempts page, retaining the original URL for existing links
 - `summary.pdf`: paper reading notes linked from the research notes page
 - `styles.css`: visual design and responsive layout
 - `script.js`: small interactions and footer year
@@ -22,6 +22,7 @@ GitHub Pages.
 ## How to customize
 
 `failures.html` uses one sentence per submission, without review-stage labels.
+Its title and navigation label are "Attempts"; submission outcomes stay unchanged.
 Each conference links to its official schedule (checked 2026-10-21).
 The ordering references are ICCV 2025 (2025-06-26), AAAI 2026 (2025-09-15),
 NeurIPS 2025 (2025-09-18), CVPR 2026 (2026-02-20), and AAAI 2027 (2026-09-24).
@@ -31,6 +32,19 @@ public schedules; add personal dates or reflections only when supplied.
 1. Replace placeholder text in `index.html`.
 2. Update the contact links in the contact section.
 3. If needed, change colors and spacing in `styles.css`.
+
+## Theme Easter egg
+
+The Lucide terminal icon next to the header name toggles a local terminal theme
+on all three pages. The default stays classic. The choice is stored only in
+the browser under `yipanwei-theme`; no network requests or analytics are used.
+Click again to restore the classic theme. Keyboard activation and focus/hover
+tooltips are supported. With storage blocked, switching still works for the
+current page. Without JavaScript, the site stays classic and has no inert toggle.
+The bundled Lucide icon's ISC license is included in `script.js`.
+Run `node tests/site-features.browser.cjs` with Playwright (or `PLAYWRIGHT_PATH`)
+to check both themes, responsive layouts, Attempts links, the scholarship entry,
+and storage/JavaScript-disabled behavior.
 
 ## Visitor statistics (disabled)
 
